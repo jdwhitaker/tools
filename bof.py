@@ -7,7 +7,7 @@ def pattern_create(length):
     args = ['msf-pattern_create', '-l', str(length)]
     proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, err = proc.communicate() 
-    return output
+    return output[:-1] # remove ending newline
     
 def pattern_offset(pattern, query):
     if type(query) is str:
