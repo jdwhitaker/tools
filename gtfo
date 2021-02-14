@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CMD=$1
+
+case $CMD in
+	'list')
+		curl https://gtfobins.github.io/  2>/dev/null | grep 'href="/gtfobins/' | cut -d '/' -f 3 | sort -u | less
+	;;
+	'info')
+		BIN=$2
+		curl https://gtfobins.github.io/gtfobins/${BIN}/ 2>/dev/null | html2text | less
+	;;
+	*)
+		echo "Usage: $0 list|info <binary>"
+	;;
+esac
+
